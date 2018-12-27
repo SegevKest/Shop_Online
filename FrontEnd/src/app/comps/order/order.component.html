@@ -1,0 +1,48 @@
+<div class="jumbotron col-12">
+  <h4>Order</h4>
+  <br/>
+  <h6>Shipping Details</h6>
+  <form [formGroup]="orderForm" (ngSubmit)="OrderCart()" >
+    <div class="form-group">
+        <input placeholder="City" type="text" class="form-control" formControlName="city" (dblclick)="autoFillForm()"/>
+    </div>
+    <div class="form-group">
+        <input placeholder="Street" type="text" class="form-control" formControlName="street" (dblclick)="autoFillForm()"/>
+    </div>
+    <div class="form-group">
+        <input placeholder="Shipping Date" type="date" class="form-control"
+         formControlName="shippingDate" (blur)="checkShippingDate()"/>
+    </div>
+    <div *ngIf="errorMsg" class="alert alert-danger" role="alert">
+        {{ errorMsg }}
+    </div>
+    <div class="form-group">
+      <h6>Payment</h6>
+        <input placeholder="Payment" type="text" class="form-control" formControlName="payment" />
+    </div>
+    <button class="btn btn-danger" [disabled]=" this.orderForm.invalid"
+     data-toggle="modal" data-target="#orderModal"> Order</button>
+  </form>
+</div>
+
+<!-- Modal -->
+<div class="modal fade"  id="orderModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">New Order</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Your Purchase was done successfully !
+          To Download the Reciept
+          <a href="{{ this.downloadUrl }}" target="_self" download>Here</a>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary "  data-dismiss="modal" (click)=" this.router.navigate(['/shop'])">Accept</button>
+        </div>
+      </div>
+    </div>
+  </div>

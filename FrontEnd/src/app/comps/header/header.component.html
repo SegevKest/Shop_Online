@@ -1,0 +1,11 @@
+<nav class="navbar navbar-expand row">
+  <div class="collapse navbar-collapse">
+      <b class="navbar-brand"><span>Nature Shop</span></b>
+      <div class="navbar-nav " style="right: 0">
+          <span class="navbar-text nav-item" > Contact Us via : Nature@shop.com</span>
+          <span class="navbar-text nav-item" >Hello Dear {{ guestName | titlecase }}</span>
+          <button class="btn btn-link nav-item nav-link" (click)="logOut()">LogOut </button>
+      </div>
+      <br/>
+  </div>
+</nav>

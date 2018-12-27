@@ -1,0 +1,24 @@
+<div>
+    <div class="input-group col-sm-4" >
+        <input type="text" class="form-control" [(ngModel)]="searchTerm"
+        placeholder="Search Product" aria-describedby="button-addon2"
+        (blur)="SearchOnType()">
+        <div class="input-group-append">
+          <button class="btn btn-outline-primary" type="button" id="button-addon2" (click)="getSearchedProducts()">Search</button>
+        </div>
+  </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="navbar-nav">
+            <span class="nav-item nav-link active"
+            (click)="getProductsOfCatagory($event)"
+            *ngFor="let catagory of allCatagories; let i = index;">
+            {{i+1}}. {{ catagory.catagoryName | titlecase}}</span>
+          </div>
+    </nav>
+    <div>
+      <app-product *ngFor="let product of catagoryProducts" [theProduct]="product" >
+      </app-product>
+    </div>
+
+
+</div>

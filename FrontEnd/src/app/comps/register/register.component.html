@@ -1,0 +1,64 @@
+<div class="row ">
+  <form [formGroup]="registerForm" (ngSubmit)="register($event)" class="col-lg-12">
+      <h1>Register</h1>
+    <div class="jumbotron col-lg-5" style="float: left; overflow:auto;">
+      <h3>Step 1</h3>
+      <hr>
+      <div class="alert alert-danger" role="alert" *ngIf="this.errMsg">
+          {{ this.errMsg }}
+      </div>
+        <div >
+          <input placeholder="ID"
+          type="text" formControlName="id"
+          class="form-control"
+          [ngClass]=" {'is-invalid': registerForm.controls['id'].invalid && !registerForm.untouched }"
+          />
+        </div>
+        <div class="invalid-feedback"> ID is required</div>
+        <br/>
+        <div >
+          <input placeholder="Email" type="email" formControlName="email" class="form-control" required/>
+        </div>  <br/>
+        <div>
+          <input placeholder="Password" type="password" formControlName="password" class="form-control" required/>
+        </div><br/>
+        <div>
+            <input placeholder="Confirm Password" formControlName="confpassword" type="password" class="form-control" required/>
+        </div><br/>
+        <button type="button" class="btn btn-info"
+        style="float: right; overflow:auto" (click)="resumeRegister()"> Resume </button>
+    </div>
+
+    <div *ngIf="this.ableToResume && registerForm.controls['email'].valid"
+          class="jumbotron col-lg-5" style="float: right; overflow:auto" >
+          <h3>Step 2</h3>
+          <hr>
+      <div>
+        <input placeholder="First Name" type="text" formControlName="firstName" class="form-control" required/>
+      </div><br/>    <div>
+        <input placeholder="Last Name" type="text" formControlName="lastName" class="form-control" required/>
+      </div><br/>
+      <div>
+        <input placeholder="Street" type="text" formControlName="street" class="form-control" required/>
+      </div><br/>
+      <div>
+          <select class="form-control" formControlName="city" placeholder="City" required>
+            <option>Haifa</option>
+            <option>Kiryat Shmone</option>
+            <option>Tveria</option>
+            <option>Hadera</option>
+            <option>Natanya</option>
+            <option>Hertlizya</option>
+            <option>Tel Aviv</option>
+            <option>Ashkelon</option>
+            <option>Beer Sheba</option>
+            <option>Eilat</option>
+          </select>
+      </div>
+      <br/>
+      <button type="click" [disabled]="registerForm.invalid" class="btn btn-danger"
+       (click)="register()" style="float: right; overflow:auto"> Sign Up </button>
+    </div>
+
+  </form>
+</div>

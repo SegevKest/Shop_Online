@@ -1,0 +1,10 @@
+<li class="col-md-12">
+  <div class="d-flex w-100 justify-content-between" >
+  <h5>{{ sideBar_product.productName | titlecase }}</h5>
+  <h6><b>{{ sideBar_product.totalPrice | currency:'ILS' }}</b></h6>
+  </div>
+  <p class="mb-1">Amount:{{ sideBar_product.amount}} </p>
+  <h6 style="float: right" *ngIf="locationFlag">
+    <span class="badge badge-pill badge-danger" (click)="deleteProduct($event)" id="{{ sideBar_product.productId }}" >
+      Remove</span> </h6>
+</li>

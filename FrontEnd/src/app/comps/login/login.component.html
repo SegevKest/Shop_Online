@@ -1,0 +1,44 @@
+<div class="row ">
+
+  <div class="jumbotron col-sm-4">
+    <form [formGroup]=" loginForm" (ngSubmit)="logIn($event)">
+    <h1>Login</h1><br/>
+    <div >
+      <input placeholder="Email" type="email" formControlName="email" class="form-control" required/>
+    </div>  <br/>
+    <div>
+      <input placeholder="Password" type="password" formControlName="password" class="form-control" required/>
+    </div>
+    <br/>
+    <div *ngIf="! shop.loginMsg ">
+      <button class="btn btn-primary"> Log in </button>
+      <button class="btn btn-link" routerLink='/register' routerLinkActive="router-link-active"> Sign up</button>
+    </div>
+  </form>
+  <br>
+  <button *ngIf=" shop.loginMsg " class="btn btn-info"><a routerLink='/shop' routerLinkActive="router-link-active"> Continue Shopping</a></button>
+
+</div>
+
+  <div class=" col-sm-4">
+    <br/>
+    <h3>About Us</h3><br/>
+    <p>
+      Our Store belives in Fresh, Organic, Healthy products for our customers.
+      Our Farms locate in the country side near Jordan River, which helps us be an free energy Organic Farm.
+      We recommend you to start exploring our Website :)
+    </p>
+
+  </div>
+
+  <div class="jumbotron col-sm-4">
+    <h1>Store </h1>
+
+    <div *ngIf="shop.loginMsg" class="alert alert-danger" role="alert">
+        {{ shop.loginMsg }}
+    </div>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyiYFC636mOqCAKrZagUv6Zmi103f8yE0KHxwAATkSW8l0JxfSIw" alt="About Us picture">
+    <h6>Available Products: {{ this.totalProducts }}</h6>
+    <h6>Orders ordered: {{ this.totalOrders }}</h6>
+  </div>
+</div>
